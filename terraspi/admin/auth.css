@@ -1,0 +1,60 @@
+
+
+  body {
+   font: 24px Helvetica;
+   margin: auto;
+   background-image:url(../img/fondserpent.jpeg);   
+   }
+   
+   h1{
+       font-family: cursive cursive;
+       text-align:center;
+       color:red;
+   }
+   p{
+       color:red;
+       font-size: 18px;
+       margin-left:1%;
+       font-family: cursive cursive;
+   }
+   #main{
+
+    margin-left: 10%;
+    width: 200px;
+    margin-top: 8px;
+    
+   }
+
+#accueil {
+    
+    padding: 5px 10px; 
+    background: red;
+    color: black;   
+    font-size: 14px;
+    font-style: italic ;    
+    border-radius: 25pt;
+    margin-left: 30px;
+}
+
+ input[type=submit] {
+   width:100px;
+   border: 1px solid black;
+   border-radius: 7pt;
+   background-color:red;
+   color:black;
+ }
+ 
+ input[type=password] {
+     width:70px;
+   border: 1px solid black;
+   border-radius: 7pt; 
+   background-color:red;
+ }
+ 
+   input[type=text] {
+     width:70px;
+   border: 1px solid black;
+   border-radius: 7pt; 
+   background-color:red;
+ }
+

@@ -1,0 +1,238 @@
+	/* un peu de déco */
+	#content > * {		
+		padding: 1em;
+		margin: 0.2em;
+		border-radius: 1em;
+		background-color: #fae89f ;
+	}
+	
+	header {		
+		padding: 1em;
+		margin: 0.2em;
+		border-radius: 1em;
+		background-color: #BCF5A9;
+	}
+	
+	footer {		
+		padding: 1em;
+		margin: 0.2em;
+		border-radius: 1em;
+		background-color:  #fab69f ;
+	}
+
+	/*Ca nous intéresse à partir de là*/
+	header, #content, footer {
+		display: -webkit-box;
+		display: -moz-box;         
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;             /* déclaration flexbox suivant les navigateurs*/
+	}
+
+	/* On adapte les boites */
+	main {
+		flex: 1; /* Force l'étirement */
+		overflow: none; /* scrolling de la div auto */
+		order: 2 ;/* position */
+		
+		
+	}
+	
+	nav {
+		order: 1; /* position */
+		
+	}
+	
+	aside {
+		order: 3; /* position */
+		
+	}
+
+	/* On force la taille de la page... et on modèle de boite global */
+	body, html {
+		display: flex;
+		flex-direction: column;  /* disposition */
+		height: 100%
+	}
+
+	/* et on s'arrange pour que le contenu (ligne 2) prenne toute la place */
+	#content {
+		height: 100%
+	}
+
+html {
+	background-color:#7F7F7F;
+	}
+	
+h2 {
+	text-align: center;
+	font-style: italic;
+	
+}		
+	
+#shell {
+	width:      80%;
+    height:     80%;
+	margin-left: 10%;
+	border: 1px solid black;
+	border-radius: 7pt;
+	background-color: #EF9179;
+}
+	
+#model {    
+    padding: 10px 40px; 
+    background: #EF9179;
+    color: black;
+    font-size: 15px;
+    font-style: italic;    
+    border-radius: 25pt;    
+    text-align: center;
+    border: 1px solid black;    
+}
+
+#cpu {
+    border: 1px solid black;
+    padding: 10px 40px; 
+    background: #EF9179;
+    color: black;
+    font-size: 15px;
+    font-style: italic;    
+    border-radius: 25pt;    
+    text-align: center;
+}
+
+#loadavg {    
+    padding: 10px 40px; 
+    background: #EF9179;
+    color: black;
+    font-size: 15px;
+    font-style: italic;    
+    border-radius: 25pt;
+    text-align: center;
+    border: 1px solid black;
+}
+
+#mem {    
+    padding: 10px 40px; 
+    background: #EF9179;
+    color: black;
+    font-size: 15px;
+    font-style: italic;    
+    border-radius: 25pt;
+    text-align: center;
+    border: 1px solid black;
+}
+
+#bdd {    
+    width: 300px;
+    background: #EF9179;
+    color: black;
+    font-size: 15px;
+    font-style: italic;    
+    border-radius: 25pt;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 7pt;
+    margin-top: 8px;
+}
+
+#date {
+    margin:  auto;
+    text-align: center;
+    font-style: italic;
+    font-size     : 1.5em;
+    font-weight: bold; 
+}
+
+#heure {
+    margin:  auto;
+    text-align: center;
+    font-size     : 2em;  
+    font-weight: bold;   
+}
+
+#ephem {
+	margin:  auto;
+    text-align: center;
+    font-size     : 1.2em; 
+    font-style: italic;      
+}
+
+
+#nas {    
+    padding: 10px 40px; 
+    background: #81DAF5;
+    color: black;   
+    font-size: 18px;
+    font-style: italic;    
+    border-radius: 25pt;
+    border: 1px solid black;
+}
+
+#phpmyadmin {    
+    padding: 10px 40px; 
+    background: #F7BE81;
+    color: black;   
+    font-size: 18px;
+    font-style: italic;    
+    border-radius: 25pt;
+    border: 1px solid black;
+}
+
+#logout {    
+    padding: 10px 40px; 
+    background: #FA5858;
+    color: black;   
+    font-size: 18px;
+    font-style: italic;    
+    border-radius: 25pt;
+    border: 1px solid black;
+}
+
+#accueil {    
+    padding: 10px 40px; 
+    background: #B4CFED;
+    color: black;   
+    font-size: 18px;
+    font-style: italic;    
+    border-radius: 25pt;
+    border: 1px solid black;
+}
+
+#terrarium {    
+    padding: 10px 40px; 
+    background: #58FA82;
+    color: black;   
+    font-size: 18px;
+    font-style: italic;    
+    border-radius: 25pt;
+    border: 1px solid black;
+}	
+
+.element {    
+    margin: 8%;
+    text-align: center; 
+    
+}
+
+.element2 {    
+    margin: auto;
+    text-align: center; 
+    
+}
+	/*************************************************************/
+
+
+
+	@media all and (max-width: 600px) {
+		#content {
+			flex-flow: column  /* disposition */
+		}
+		nav, aside {
+			order: 2  /* position */
+		}
+		main {
+			order: 1  /* position */
+		}
+	}
+

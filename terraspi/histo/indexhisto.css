@@ -1,0 +1,119 @@
+
+
+html {
+
+    height:100%;
+}
+
+body {
+    height: 99%;
+    margin: 0;
+    padding: 0;
+    color: #FFFFFF;
+    background-color : black;
+    margin-top: 1%;
+
+}
+
+#conteneur {
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+#histo {
+    
+    padding: 2px 10px; 
+    background: #848484;
+    color: black;   
+    font-size: 18px;
+    font-style: italic;    
+    border-radius: 25pt;
+}
+
+#manage {
+    
+    padding: 2px 10px; 
+    background: #848484;
+    color: black;   
+    font-size: 18px;
+    font-style: italic;    
+    border-radius: 25pt;
+}
+
+#serpent {
+    text-align: center;
+    font-style: italic;
+    font-size: 18px;
+    
+}
+
+#serpent a {
+color: grey;
+padding: 20px 10px 10px 95px;
+background: rgba(0,0,0,0.5) url(../img/serpent.png) no-repeat 5px 10px;
+}
+
+/* première étape */
+#serpent a, #serpent a:hover, #serpent a:focus {
+color: white;
+animation-name: serpent; /* nom de l'animation */
+animation-duration: 4s; /* temps de l'animation (4s) */
+animation-iteration-count: infinite; /* nombre de boucles (infinie) */
+animation-timing-function: linear; /* accelération de l'animation (constant) */
+}
+/* deuxième étape */
+@-moz-keyframes serpent {   
+0% {background:rgba(0,0,0,0.4) url(../img/serpent.png) no-repeat 5px 10px;}
+50% {background:rgba(0,0,0,1) url(../img/serpent.png) no-repeat 40px 10px;}
+100% {background:rgba(0,0,0,0.4) url(../img/serpent.png) no-repeat 5px 10px;}
+}
+
+
+@-webkit-keyframes serpent {    
+0% {background:rgba(0,0,0,0.4) url(../img/serpent.png) no-repeat 5px 10px;}
+50% {background:rgba(0,0,0,1) url(../img/serpent.png) no-repeat 40px 10px;}
+100% {background:rgba(0,0,0,0.4) url(../img/serpent.png) no-repeat 5px 10px;}
+}
+
+
+#pc {
+    text-align: center;
+    font-style: italic;
+    font-size: 18px;    
+}
+
+
+#pc a {
+color: grey;
+padding: 20px 10px 10px 95px;
+background: rgba(0,0,0,0.5) url(../img/pc.png) no-repeat 5px 10px;
+}
+
+/* première étape */
+#pc a, #pc a:hover, #pc a:focus {
+color: white;
+animation-name: pc; /* nom de l'animation */
+animation-duration: 4s; /* temps de l'animation (4s) */
+animation-iteration-count: infinite; /* nombre de boucles (infinie) */
+animation-timing-function: linear; /* accelération de l'animation (constant) */
+}
+/* deuxième étape */
+@-moz-keyframes pc {   
+0% {background:rgba(0,0,0,0.4) url(../img/pc.png) no-repeat 5px 10px;}
+50% {background:rgba(0,0,0,1) url(../img/pc.png) no-repeat 40px 10px;}
+100% {background:rgba(0,0,0,0.4) url(../img/pc.png) no-repeat 5px 10px;}
+}
+
+
+@-webkit-keyframes pc {    
+0% {background:rgba(0,0,0,0.4) url(../img/pc.png) no-repeat 5px 10px;}
+50% {background:rgba(0,0,0,1) url(../img/pc.png) no-repeat 40px 10px;}
+100% {background:rgba(0,0,0,0.4) url(../img/pc.png) no-repeat 5px 10px;}
+}
