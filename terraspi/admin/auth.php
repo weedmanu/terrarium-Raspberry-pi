@@ -4,12 +4,12 @@
 $json = file_get_contents("/var/www/html/terraspi/config.json");
 $config = json_decode($json);
 // on passe en variable php les champs qui nous intéressent
-$login = $config->{'admin'}->{'login_admin'};
-$mdp = $config->{'admin'}->{'mdpadmin'};
+$loginadmin = $config->{'admin'}->{'login_admin'};
+$mdpadmin = $config->{'admin'}->{'mdpadmin'};
 
   // Definition des constantes et variables
-  define('LOGIN',$login);   
-  define('PASSWORD',$mdp); 
+  define('LOGIN',$loginadmin);   
+  define('PASSWORD',$mdpadmin); 
   $errorMessage = '';
  
   // Test de l'envoi du formulaire
