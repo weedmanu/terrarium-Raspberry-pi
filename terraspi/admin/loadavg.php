@@ -1,6 +1,6 @@
 
 <?php
-$loadavg = exec ('python loadavg.py'); 
+$loadavg = exec ('python /prog/loadavg.py'); 
 
 $uneminute = substr($loadavg, 2, 4);
 $cinqminute = substr($loadavg, 10, 4);
