@@ -1,7 +1,7 @@
 <?php
 
 	// on récupère les infos dans config.json
-$json = file_get_contents("/home/pi/terra/config.json");
+$json = file_get_contents("/var/www/html/terraspi/config.json");
 $config = json_decode($json);
 // on passe en variable php les champs qui nous intéressent
 $login = $config->{'admin'}->{'login_admin'};

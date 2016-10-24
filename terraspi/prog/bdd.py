@@ -15,7 +15,7 @@ from email.Utils import COMMASPACE, formatdate
 from email import Encoders
 
 # on ouvre le fichier config .json
-with open('/home/pi/terra/config.json') as config:    
+with open('/var/www/html/terraspi/config.json') as config:    
     data = json.load(config)
 
 # On défini la limite basse et haute pour l'envoi d'un mail si la limite est dépassée

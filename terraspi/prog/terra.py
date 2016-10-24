@@ -15,7 +15,7 @@ GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 
 # on ouvre le fichier config .json
-with open('/home/pi/terra/config.json') as config:    
+with open('/var/www/html/terraspi/config.json') as config:    
     config = json.load(config)
     
 GPIO.setup(int(config["gpio"]["lampe"]), GPIO.OUT)  # lumiere
