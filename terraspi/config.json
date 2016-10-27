@@ -1,9 +1,0 @@
-{ 
-	"mysql": 	
-	{
-			"login_mysql": "votre_login_mysql",
-			"mdp_mysql": "votre_mdp_mysql"
-	}    
-
- }
-
