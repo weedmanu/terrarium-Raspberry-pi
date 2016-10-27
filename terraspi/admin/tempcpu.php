@@ -1,13 +1,26 @@
-
 <?php
-
-	// on récupère les infos dans config.json
-$json = file_get_contents("/var/www/html/terraspi/config.json");
-$config = json_decode($json);
-
-// on passe en variable php les champs qui nous intéressent
-$warning = $config->{'raspberry'}->{'warning'};
-
+//  Connexion à MySQL.
+$link = mysql_connect( 'localhost', 'root', 'bob' );  
+if ( !$link ) {
+  die( 'Could not connect: ' . mysql_error() );
+}
+// Sélection de la base de données.
+$db = mysql_select_db( 'Terrarium', $link );
+if ( !$db ) {
+  die ( 'Error selecting database Terrarium : ' . mysql_error() );
+}
+// Récupération des datas
+$sql = "SELECT warmpi FROM config";
+    $retour = mysql_query($sql);
+    if ($retour === FALSE) {
+        echo "La requête SELECT a échoué.";
+    } else {
+        while ($enreg = mysql_fetch_array($retour)) {	            
+            $warmpi = $enreg["warmpi"];                   
+        }
+    }
+// Fermer la connexion à MySQL
+mysql_close($link);
 
  //On exécute la commande de récupérage (si si) de température
  $temp = exec('cat /sys/class/thermal/thermal_zone0/temp');
@@ -20,11 +33,10 @@ $warning = $config->{'raspberry'}->{'warning'};
  $wrong = '<link href="indexadminKO.css" media="all" rel="stylesheet" type="text/css" />'. $temppi .'°C ';
  //Si la température < 65°C alors on affiche en vert, sinon en rouge
  echo 'Temp CPU</br>';
- if ($temppi < $warning)
+ if ($temppi < $warmpi)
   echo $ok ;
  else
   echo $wrong ;
 
 
 ?>
-

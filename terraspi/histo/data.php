@@ -1,14 +1,7 @@
 <?php
 
-// on récupère les infos dans config.json
-$json = file_get_contents("/home/pi/terra/config.json");
-$config = json_decode($json);
-// on passe en variable php les champs qui nous intéressent
-$login = $config->{'mysql'}->{'login'};
-$mdp = $config->{'mysql'}->{'mdp'};
-
 //  Connexion à MySQL.
-$link = mysql_connect( 'localhost', $login, $mdp );  
+$link = mysql_connect( 'localhost', manu, terra );  
 if ( !$link ) {
   die( 'Could not connect: ' . mysql_error() );
 }

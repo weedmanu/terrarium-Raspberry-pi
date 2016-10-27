@@ -1,8 +1,3 @@
-
-
-
-
-
 $(function () {
     $.getJSON('data.php', function (data) {  // on récupère les data du json.
 
@@ -36,8 +31,8 @@ $(function () {
                 }
             },
 
-            min : 20,      // min et max , commenté ces 2 lignes pour un ajustement auto des y
-            max : 40,
+            //min : 20,      // min et max , commenté ces 2 lignes pour un ajustement auto des y
+            //max : 40,
             tooltip: {
                 valueSuffix: ' °C'
             },          
@@ -56,8 +51,8 @@ $(function () {
                     color: Highcharts.getOptions().colors[1]
                 }
             },
-            min : 20,
-            max : 40,
+            //min : 20,
+            //max : 40,
             tooltip: {
                 valueSuffix: '°C',
             },

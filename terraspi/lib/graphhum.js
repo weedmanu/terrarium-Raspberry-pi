@@ -1,8 +1,3 @@
-
-
-
-
-
 $(function () {
     $.getJSON('data.php', function (data) {  // on récupère les data du json.
 

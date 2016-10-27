@@ -11,8 +11,38 @@ if(empty($_SESSION['login']))
 // on récupère les infos dans config.json
 $json = file_get_contents("/home/pi/terra/config.json");
 $config = json_decode($json);
+
 // on passe en variable php les champs qui nous intéressent
-$ip = $config->{'ip'}->{'shellinabox'};
+$login = $config->{'loginbdd'};
+$mdp = $config->{'mdpbdd'};
+
+// Connexion à MySQL
+$link = mysql_connect( 'localhost', $login, $mdp ); // changer par votre password 
+if ( !$link ) {
+  die( 'Could not connect: ' . mysql_error() );
+}
+
+// Sélection de la base de données
+$db = mysql_select_db( 'Terrarium', $link );
+if ( !$db ) {
+  die ( 'Error selecting database temperatures : ' . mysql_error() );
+}
+// Récupération des datas
+
+$sql = "SELECT * FROM config";
+    $retour = mysql_query($sql);
+    if ($retour === FALSE) {
+        echo "La requête SELECT a échoué.";
+    } else {
+        while ($enreg = mysql_fetch_array($retour)) {	            
+            $ipdupi = $enreg["ip"];                               
+        }
+    }
+
+// Fermer la connexion à MySQL
+mysql_close($link);
+
+
 ?>
 
 <!doctype html>
@@ -29,7 +59,7 @@ $ip = $config->{'ip'}->{'shellinabox'};
 	function ()
 	{
 		$('#loadavg').load('loadavg.php').fadeIn("fast");
-		$('#cpu').load('Tempcpu.php').fadeIn("fast");
+		$('#cpu').load('tempcpu.php').fadeIn("fast");
 		$('#mem').load('mem.php').fadeIn("fast");    
 	}, 1000); // rafraichis toutes les 10000 millisecondes
  
@@ -66,21 +96,16 @@ $ip = $config->{'ip'}->{'shellinabox'};
     <main>
 		
 		<h2>Terminal</h2>		
-		<iframe id="shell" src="<?php echo 'http://'.$ip.':4200' ?>"></iframe>
+		<iframe id="shell" src="<?php echo 'http://'.$ipdupi.':4200';?>" ></iframe>
     
     </main>
     
     
     <nav>
 		
-		<h2>Sites Web</h2>
-		
+				
+		<?php require'formulaire.php';?>
         
-		<p class="element" id="terrarium"><a href="../accueil/index.php" title="terrarium" style="text-decoration:none">Terrarium</a></p>		
-		
-		<p class="element" id="phpmyadmin"><a href="http://192.168.0.75/phpmyadmin/" target="_blank" title="PhpMyAdmin" style="text-decoration:none">PhpMyAdmin</a></p>
-		
-		<p class="element" id="nas" ><a href="https://192.168.0.2:13125/index.cgi " target="_blank" title="Nas" style="text-decoration:none">Nas</a></p>    
     
     </nav>
     
@@ -96,6 +121,8 @@ $ip = $config->{'ip'}->{'shellinabox'};
 		<div class="element" id="loadavg"><?php require'loadavg.php';?></div>
 		
 		<div class="element" id="mem"><?php require'mem.php';?></div>      
+		
+		<div class="element" ><div id="bdd"><?php require'bdd.php';?></div></div>
     
     </aside>
     
@@ -110,7 +137,7 @@ $ip = $config->{'ip'}->{'shellinabox'};
 	<a href="../accueil/index.php" title="Accueil" style="text-decoration:none" target="_blank"><div id="accueil">Accueil</div></a>	
 	</div>
 	
-	<div class="element2" ><div id="bdd"><?php require'bdd.php';?></div></div>
+	<p class="element2" id="phpmyadmin"><a href="<?php echo 'http://'.$ipdupi.'/phpmyadmin' ;?>" target="_blank" title="PhpMyAdmin" style="text-decoration:none">PhpMyAdmin</a></p>	
 	
 	<div class="element2" >
 	<a href="logout.php" title="logout" style="text-decoration:none"><div id="logout">déconnexion</div></a>	

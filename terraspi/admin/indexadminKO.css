@@ -220,6 +220,62 @@ h2 {
     text-align: center; 
     
 }
+
+
+
+label {
+  width: 10%; 
+  font-size: 18px;
+  margin-top: 1%;  
+}
+
+input {
+  width: 100px;
+  background-color: #EF9179;
+  border-radius: 7pt;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 18px;
+  margin-top: 2%;
+   
+}
+
+input[type=submit] {
+  width: 300px;
+  padding: 10px;
+}
+
+
+#lon, #lat {	
+  width: 150px;
+}
+
+#envoyeur, #receveur {
+   width: 300px; 
+}
+
+#mdpenvoyeur {
+   width: 150px;
+}
+
+#loginadmin, #mdpadmin {
+	width:150px;
+}
+
+legend {
+	font-size: 1.2em;
+	margin-left: 40px;
+	font-weight: bold;
+	font-style: italic;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+
+fieldset {
+	border-color: black;
+	font-size: 1em;
+}
+
 	/*************************************************************/
 
 

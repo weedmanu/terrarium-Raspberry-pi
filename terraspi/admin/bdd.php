@@ -1,15 +1,15 @@
 <?php
 
-	// on récupère les infos dans config.json
-$json = file_get_contents("/var/www/html/terraspi/config.json");
+    // on récupère les infos dans config.json
+$json = file_get_contents("/home/pi/terra/config.json");
 $config = json_decode($json);
 
 // on passe en variable php les champs qui nous intéressent
-$loginbdd = $config->{'mysql'}->{'login_mysql'};
-$mdpbdd = $config->{'mysql'}->{'mdp_mysql'};
+$login = $config->{'loginbdd'};
+$mdp = $config->{'mdpbdd'};
 
 //  Connexion à MySQL
-$link = mysql_connect( 'localhost', $loginbdd, $mdpbdd ); // changer par votre password 
+$link = mysql_connect( 'localhost', $login, $mdp ); // changer par votre password 
 if ( !$link ) {
   die( 'Could not connect: ' . mysql_error() );
 }
