@@ -6,6 +6,7 @@ echo "     ////////////////////////////////////////////////"
 echo "     //     Début du programme d'installation      //"
 echo "     ////////////////////////////////////////////////"
 echo ""
+apt-get update && apt-get upgrade -y
 echo ""
 echo""
 echo "Voulez-vous installer build , python , pip et la librairie ephem :"
@@ -148,12 +149,13 @@ chmod -R 770 /var/www/html/
 echo ""
 cd /home/pi
 git clone https://github.com/weedmanu/terraspiV2.git
-chown -R www-data:pi /home/pi/terraspiV2
-chmod -R 770 /home/pi/terraspiV2
 cd /home/pi/terraspiV2
 mv terraspi -t /var/www/html/
-mv terra -t /home/pi/
-/var/wwww/html/terraspi/csv/
+chown -R www-data:pi /var/www/html/
+chmod -R 770 /var/www/html/
+cd /var/www/html/terraspi/
+cp install.sh -t /var/www/html/terraspi/prog/
+cd /var/www/html/terraspi/prog/
 echo ""
 echo "Voulez-vous régler la config ?"
 echo "OUI OBLIGATOIRE POUR UNE PREMIERE INSTALLATION (Y/N)"
@@ -161,7 +163,8 @@ read ouinon
 if [ "$ouinon" = "y" ] || [ "$ouinon" = "Y" ]; then		
 	echo ""
 	echo "     ////////////////////////////////////////////////////"
-	echo "     // Réglage des paramètres du fichier config.json  //"
+	echo "     //   Réglage des paramètres du fichier bdd.json   //"  
+	echo "     //   	dans /var/www/html/terraspi/prog/        //"  
 	echo "     ////////////////////////////////////////////////////"
 	echo ""
 	echo "    **************"
@@ -171,14 +174,19 @@ if [ "$ouinon" = "y" ] || [ "$ouinon" = "Y" ]; then
 	echo "login mysql"
 	echo ""
 	read loginbdd
-	sed -i "s/loginbddl/${loginbdd}/g" config.json
+	sed -i "s/loginbdd/${loginbdd}/g" bdd.json
 	echo "ok"
 	echo ""
 	read mdpbdd
 	echo "mot de passe "
 	echo ""
-	sed -i "s/mdpbdd/${mdpbdd}/g" config.json
+	sed -i "s/mdpbdd/${mdpbdd}/g" bdd.json
 	echo "ok"		
+	echo ""
+	echo ""
+	echo "     ////////////////////////////////////////////////////"
+	echo "     //   Réglage des paramètres de la base de donnée  //"  
+	echo "     ////////////////////////////////////////////////////"
 	echo ""
 	echo "Voulez-vous régler la position ?"
 	echo "OUI OBLIGATOIRE POUR UNE PREMIERE INSTALLATION (Y/N)"
@@ -364,7 +372,7 @@ if [ "$ouinon" = "y" ] || [ "$ouinon" = "Y" ]; then
 	dateetheure=$(date +%Y%m%d%H%M%S)
 	echo ""
 	echo ""
-	mysql -uroot -p${mdproot} -hlocalhost -D${dbname} -e "INSERT INTO config (dateetheure, loginadmin, mdpadmin, longitude, latitude, altitude, warmpi, limitebasse, limitehaute, jour, nuit, warmpi, receveur, envoyeur, mdpenvoyeur, ip) VALUES ( '$dateetheure', '$loginadmin', '$$mdpadmin', '$longitude', '$latitude', '$altitude', '$limitebasse', '$limitehaute', '$jour', '$nuit', '$warmpi', '$receveur', '$envoyeur', '$mdpenvoyeur', '$ip' )";
+	mysql -uroot -p${mdproot} -hlocalhost -D${dbname} -e "INSERT INTO bdd (dateetheure, loginadmin, mdpadmin, longitude, latitude, altitude, warmpi, limitebasse, limitehaute, jour, nuit, warmpi, receveur, envoyeur, mdpenvoyeur, ip) VALUES ( '$dateetheure', '$loginadmin', '$$mdpadmin', '$longitude', '$latitude', '$altitude', '$limitebasse', '$limitehaute', '$jour', '$nuit', '$warmpi', '$receveur', '$envoyeur', '$mdpenvoyeur', '$ip' )";
 	echo ""		
 elif [ "$ouinon" = "n" ] || [ "$ouinon" = "N" ]; then
 echo "Ok"
@@ -373,10 +381,13 @@ echo "Il faut taper Y ou N!! Pas $ouinon"
 fi
 echo ""
 echo "     //////////////////////////////////////////////"
-echo "     //   Fin du réglage du fichier config.json  //"
+echo "     //   Fin du réglage du fichier bdd.json  //"
 echo "     //////////////////////////////////////////////"
 echo ""
-echo "Et je dirais même plus , suppression du fichier d'install.... "
+echo "Et je dirais même plus , "
+cd /var/www/html/terraspi/
+rm install.sh
+cd /home/pi/
 rm -R terraspiV2
 echo ""
 echo "           ********************************"
