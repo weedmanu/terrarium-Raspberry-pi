@@ -1,12 +1,12 @@
 <?php
 
     // on récupère les infos dans config.json
-$json = file_get_contents("/home/pi/terra/config.json");
+$json = file_get_contents("/var/www/html/terraspi/csv/bdd.json");
 $config = json_decode($json);
 
 // on passe en variable php les champs qui nous intéressent
-$login = $config->{'loginbdd'};
-$mdp = $config->{'mdpbdd'};
+$login = $config->{'mysql'}->{'loginmysql'};
+$mdp = $config->{'mysql'}->{'mdpmysql'};
 
 //  Connexion à MySQL.
 

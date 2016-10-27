@@ -1,0 +1,7 @@
+{ 	
+	"mysql": 
+	{	
+		"loginmysql": "manu",
+		"mdpmysql": "terra" 
+	}
+ }

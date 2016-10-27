@@ -15,11 +15,11 @@ from email.Utils import COMMASPACE, formatdate
 from email import Encoders
 
 # on ouvre le fichier config .json
-with open('/home/pi/terra/config.json') as config:    
+with open('/var/www/html/terraspi/csv/bdd.json') as config:    
     config = json.load(config)
     
-login = config["loginbdd"]
-mdp =config["mdpbdd"]
+login = config["mysql"]["loginmysql"]
+mdp = config["mysql"]["mdpmysql"]
 
 db = MySQLdb.connect(host="localhost", 
                      user=login,

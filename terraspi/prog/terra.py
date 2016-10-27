@@ -19,11 +19,11 @@ GPIO.setup(4, GPIO.OUT)  # lumiere
 GPIO.setup(17, GPIO.OUT)  # chauffage
 
 # on ouvre le fichier config .json
-with open('/home/pi/terra/config.json') as config:    
+with open('/var/www/html/terraspi/csv/bdd.json') as config:    
     config = json.load(config)
     
-login = config["loginbdd"]
-mdp =config["mdpbdd"]
+login = config["mysql"]["loginmysql"]
+mdp = config["mysql"]["mdpmysql"]
 
 db = MySQLdb.connect(host="localhost", 
                      user=login,     

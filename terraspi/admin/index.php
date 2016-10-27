@@ -8,13 +8,14 @@ if(empty($_SESSION['login']))
   header('Location: auth.php');
   exit();
 }
-// on récupère les infos dans config.json
-$json = file_get_contents("/home/pi/terra/config.json");
+
+    // on récupère les infos dans config.json
+$json = file_get_contents("/var/www/html/terraspi/csv/bdd.json");
 $config = json_decode($json);
 
 // on passe en variable php les champs qui nous intéressent
-$login = $config->{'loginbdd'};
-$mdp = $config->{'mdpbdd'};
+$login = $config->{'mysql'}->{'loginmysql'};
+$mdp = $config->{'mysql'}->{'mdpmysql'};
 
 // Connexion à MySQL
 $link = mysql_connect( 'localhost', $login, $mdp ); // changer par votre password 
@@ -96,7 +97,7 @@ mysql_close($link);
     <main>
 		
 		<h2>Terminal</h2>		
-		<iframe id="shell" src="<?php echo 'http://'.$ipdupi.':4200';?>" ></iframe>
+		<iframe id="shell" src="<?php echo 'http://' .$ipdupi.':4200';?>" ></iframe>
     
     </main>
     

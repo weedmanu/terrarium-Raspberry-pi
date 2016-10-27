@@ -257,6 +257,10 @@ input[type=submit] {
    width: 150px;
 }
 
+#ipdupi {
+	width: 150px;
+}
+
 #loginadmin, #mdpadmin {
 	width:150px;
 }
