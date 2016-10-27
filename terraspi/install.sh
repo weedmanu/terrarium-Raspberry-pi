@@ -389,6 +389,18 @@ cd /var/www/html/terraspi/
 rm install.sh
 cd /home/pi/
 rm -R terraspiV2
+crontab -upi -l > tachecron
+echo "* * * * * python /var/www/html//terraspi/prog/terra.py > /dev/null 2>&1" $
+echo "*/15 * * * * python /var/www/html/terraspi/prog/bdd.py > /dev/null 2>&1" $
+crontab -upi tachecron
+rm tachecron
+cp /etc/rc.local /home/pi/test
+sed -i '$d' test
+echo "python /var/www/html//terraspi/prog/bdd.py" >> test
+echo "" >> test
+echo "exit 0" >> test
+mv test /etc/rc.local
+rm test
 echo ""
 echo "           ********************************"
 echo "           ********************************"
@@ -404,3 +416,7 @@ echo "dans votre navigateur internet et constater !!!! "
 echo ""
 echo "powered by weedmanu "
 exit
+
+
+
+
