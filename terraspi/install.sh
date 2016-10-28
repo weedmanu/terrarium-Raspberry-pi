@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo ""
 echo ""
@@ -13,6 +13,7 @@ echo "Voulez-vous installer build , python , pip et la librairie ephem :"
 echo "OUI OBLIGATOIRE POUR UNE PREMIERE INSTALLATION (Y/N)"
 read ouinon
 if [ "$ouinon" = "y" ] || [ "$ouinon" = "Y" ]; then
+	[ "`dpkg -l apt-transport-https 2>/dev/null | grep '^ii' `" == "" ];echo $?
     apt-get install apt-transport-https -y && apt-get install build-essential python-dev python-openssl git python-pip -y
     echo ""
 	pip install ephem 
