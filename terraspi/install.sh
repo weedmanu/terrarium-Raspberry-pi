@@ -155,7 +155,7 @@ chown -R www-data:pi /var/www/html/
 chmod -R 770 /var/www/html/
 cd /var/www/html/terraspi/
 cp install.sh -t /var/www/html/terraspi/prog/
-cd /var/www/html/terraspi/prog/
+cd /var/www/html/terraspi/csv/
 echo ""
 echo "Voulez-vous régler la config ?"
 echo "OUI OBLIGATOIRE POUR UNE PREMIERE INSTALLATION (Y/N)"
@@ -176,9 +176,9 @@ if [ "$ouinon" = "y" ] || [ "$ouinon" = "Y" ]; then
 	read loginbdd
 	sed -i "s/loginbdd/${loginbdd}/g" bdd.json
 	echo "ok"
-	echo ""
-	read mdpbdd
+	echo ""	
 	echo "mot de passe "
+	read mdpbdd
 	echo ""
 	sed -i "s/mdpbdd/${mdpbdd}/g" bdd.json
 	echo "ok"		
