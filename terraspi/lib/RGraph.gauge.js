@@ -1,8 +1,6 @@
-
-
-
-
+// modifié, uniquement les config pour du disign
 // version: 2015-12-16
+
     /**
     * o--------------------------------------------------------------------------------o
     * | This file is part of the RGraph package - you can learn more at:               |

@@ -1,5 +1,4 @@
 
-
 <script>
   
     RGraph.CSV('../csv/result.csv', function (csv)        //on récupère le fichier data.csv
