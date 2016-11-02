@@ -43,13 +43,6 @@ for row in cur.fetchall():
 db.close()
 
 
-print longitude
-print latitude
-print altitude
-print jour
-print nuit
-print HeureEI
-
 # ici on régle en fonction des coordonnées de sa ville, ici: Gardanne 13120 france
 somewhere = ephem.Observer()     
 somewhere.lon = str(longitude)   #  longitude
@@ -86,8 +79,6 @@ lever = int(heurel[0:2] + heurel[3:5])
 
 lever = lever + HeureEI          #heure ete hiver
 coucher = coucher + HeureEI
-print lever
-print coucher
 
 if lever < heurenow < coucher:    # si l'heure actuelle est comprise entre l'heure du lever et du coucher, s'il faut jour quoi.
   GPIO.output (4, True)            # on allume la lumière (on intervertira True et False suivant le branchement du relais  'normalement ouvert ou fermer'  )
