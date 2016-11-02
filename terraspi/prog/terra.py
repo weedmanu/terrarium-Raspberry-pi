@@ -42,7 +42,6 @@ for row in cur.fetchall():
 
 db.close()
 
-
 # ici on régle en fonction des coordonnées de sa ville, ici: Gardanne 13120 france
 somewhere = ephem.Observer()     
 somewhere.lon = str(longitude)   #  longitude
@@ -80,6 +79,7 @@ lever = int(heurel[0:2] + heurel[3:5])
 lever = lever + HeureEI          #heure ete hiver
 coucher = coucher + HeureEI
 
+
 if lever < heurenow < coucher:    # si l'heure actuelle est comprise entre l'heure du lever et du coucher, s'il faut jour quoi.
   GPIO.output (4, True)            # on allume la lumière (on intervertira True et False suivant le branchement du relais  'normalement ouvert ou fermer'  )
   target = jour                    # on donne la consigne de jour comme temperature au point chaud
@@ -93,7 +93,7 @@ fname1 = "/var/www/html/terraspi/csv/ephem.csv"    # on créer le fichier
 file1 = open(fname1, "wb")  
   
 try:
-    # Création de  CSV.mmm
+    # Création de  CSV.
     writer1 = csv.writer(file1)
     # Écriture de la ligne d'en-tête avec le titre
     # des colonnes.
