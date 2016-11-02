@@ -1,5 +1,13 @@
 <?php
 
+    // on récupère les infos dans config.json
+$json = file_get_contents("/var/www/html/terraspi/csv/bdd.json");
+$config = json_decode($json);
+
+// on passe en variable php les champs qui nous intéressent
+$login = $config->{'mysql'}->{'loginmysql'};
+$mdp = $config->{'mysql'}->{'mdpmysql'};
+
 $dateetheure = date("Y-m-d-H:i");
 
 Print("Nous sommes le $dateetheure <br/>");  
@@ -22,7 +30,7 @@ $HeureEH = htmlspecialchars($_POST['HeureEteHiver']);
 
 
 // Connexion à MySQL
-$link = mysql_connect( 'localhost', 'root', 'bob' ); // changer par votre password 
+$link = mysql_connect( 'localhost', $login, $mdp ); // changer par votre password 
 if ( !$link ) {
   die( 'Could not connect: ' . mysql_error() );
 }
