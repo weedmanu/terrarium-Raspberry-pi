@@ -93,7 +93,7 @@ fname1 = "/var/www/html/terraspi/csv/ephem.csv"    # on créer le fichier
 file1 = open(fname1, "wb")  
   
 try:
-    # Création de  CSV.
+    # Création de  CSV.mmm
     writer1 = csv.writer(file1)
     # Écriture de la ligne d'en-tête avec le titre
     # des colonnes.
