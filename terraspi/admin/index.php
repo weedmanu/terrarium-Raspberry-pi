@@ -135,7 +135,7 @@ mysql_close($link);
 			
 				
 	<div class="element2">				
-	<a href="../accueil/index.php" title="Accueil" style="text-decoration:none" target="_blank"><div id="accueil">Accueil</div></a>	
+	<a href="../accueil/index.php" title="Accueil" style="text-decoration:none"><div id="accueil">Accueil</div></a>	
 	</div>
 	
 	<p class="element2" id="phpmyadmin"><a href="<?php echo 'http://'.$ipdupi.'/phpmyadmin' ;?>" target="_blank" title="PhpMyAdmin" style="text-decoration:none">PhpMyAdmin</a></p>	
