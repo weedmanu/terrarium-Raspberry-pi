@@ -18,6 +18,7 @@ $receveur = htmlspecialchars($_POST['receveur']);
 $loginadmin = htmlspecialchars($_POST['loginadmin']);
 $mdpadmin = htmlspecialchars($_POST['mdpadmin']);
 $ipdupi = htmlspecialchars($_POST['ipdupi']);
+$HeureEH = htmlspecialchars($_POST['HeureEteHiver']);
 
 
 // Connexion à MySQL
@@ -32,9 +33,9 @@ if ( !$db ) {
   die ( 'Error selecting database temperatures : ' . mysql_error() );
 }
 
-mysql_query("insert into config ( dateetheure, loginadmin, mdpadmin, longitude, latitude, altitude, limitebasse, limitehaute, jour, nuit, warmpi, envoyeur, mdpenvoyeur, receveur, ip)
+mysql_query("insert into config ( dateetheure, loginadmin, mdpadmin, longitude, latitude, altitude, limitebasse, limitehaute, jour, nuit, warmpi, envoyeur, mdpenvoyeur, receveur, ip, Heure_ete_hiver)
  values 
- ( '$dateetheure' , '$loginadmin' , '$mdpadmin' , '$lon' , '$lat' , '$alt' , '$limitebasse' , '$limitehaute' , '$jour' , '$nuit' , '$warmpi' , '$envoyeur' , '$mdpenvoyeur' , '$receveur', '$ipdupi');");
+ ( '$dateetheure' , '$loginadmin' , '$mdpadmin' , '$lon' , '$lat' , '$alt' , '$limitebasse' , '$limitehaute' , '$jour' , '$nuit' , '$warmpi' , '$envoyeur' , '$mdpenvoyeur' , '$receveur', '$ipdupi', '$HeureEH');");
 
 echo "Vos parametre on bien été prise encompte :<br/>";	
 		
@@ -54,6 +55,7 @@ echo "<p>
 	$loginadmin <br/>
 	$mdpadmin <br/>	
 	$ipdupi <br/>
+	$HeureEH
 	</p>
 	";
 

@@ -38,7 +38,7 @@ $sql = "SELECT * FROM config";
 			$receveur = $result["receveur"];
 			$loginadmin = $result["loginadmin"];
 			$mdpadmin = $result["mdpadmin"]; 
-			$ipdupi = $result["ip"]; 			           
+			$ipdupi = $result["ip"];						           
         }
     }    
  // Fermer la connexion à MySQL
@@ -48,8 +48,14 @@ mysql_close($link);
 
 <form method="post" action="traitement.php" id="form" >
 	<fieldset>
-	<legend>réglage</legend>	
-	 <legend>position</legend>		
+	<legend>réglage</legend>
+
+	
+	   <legend>Heure été / hiver</legend>	   
+	   <input type="radio" name="HeureEteHiver"  id="HeureEte" value="200" /> <label for="HeureEte">été</label>	  
+	   <input type="radio" name="HeureEteHiver" id="HeureHiver" value="100" checked/> <label for="HeureHiver">hiver</label>	   
+		
+	   <legend>position</legend>		
        <label for="lon">longitude:</label>
        <input type="text" name="lon" id="lon"  value="<?php echo $lon ?>"/><br/>
        <label for="alt">latitude:</label>
@@ -57,20 +63,20 @@ mysql_close($link);
        <label for="alt">altitude:</label>
        <input type="number" name="alt" id="alt" value="<?php echo $alt ?>"/><br/>
 
-	<legend>consigne</legend>
+	   <legend>consigne</legend>
        <label for="jour">jour:</label>
        <input type="number" name="jour" id="jour" value="<?php echo $jour ?>" /> 
        <label for="nuit">nuit:</label>
        <input type="number" name="nuit" id="nuit" value="<?php echo $nuit ?>" /> 
 
-	<legend>warning terrarium</legend>       
+	   <legend>warning terrarium</legend>       
        <label for="limitebasse">limite basse:</label>
        <input type="number" name="limitebasse" id="limitebasse" value="<?php echo $limitebasse ?>" /> <br/>  
        <label for="limitehaute">limite haute:</label>
        <input type="number" name="limitehaute" id="limitehaute" value="<?php echo $limitehaute ?>" /><br/>  
 
    
-	<legend>mail</legend>      
+	    <legend>mail</legend>      
 		<label for="envoyeur">envoyeur: <em>(gmail obligatoire)</em></label><br/>
 		<input type="mail" name="envoyeur" id="envoyeur" value="<?php echo $envoyeur ?>" /> <br/>
 		<label for="mddpenvoyeur">mot de passe:</label><br/>
@@ -78,18 +84,18 @@ mysql_close($link);
 		<label for="receveur">receveur: <em>(gmail Non obligatoire)</em></label><br/>
 		<input type="mail" name="receveur" id="receveur" value="<?php echo $receveur ?>" /> 
 
-	<legend>warning Raspberry</legend>
-       <label for="warmpi">warning pi</label>
-       <input type="number" name="warmpi" id="warmpi" value="<?php echo $warmpi ?>" /> <br>   
+	    <legend>warning Raspberry</legend>
+        <label for="warmpi">warning pi</label>
+        <input type="number" name="warmpi" id="warmpi" value="<?php echo $warmpi ?>" /> <br>   
         <label for="ipdupi">ip du pi</label>   
-       <input type="text" name="ipdupi" id="ipdupi" value="<?php echo $ipdupi ?>" />      
+        <input type="text" name="ipdupi" id="ipdupi" value="<?php echo $ipdupi ?>" />      
        
-	<legend>admin</legend>
-       <label for="loginadmin">login:</label>
-       <input type="text" name="loginadmin" id="loginadmin" value="<?php echo $loginadmin ?>" /> <br/>
-       <label for="mdpadmin">mot de passe:</label>
-       <input type="password" name="mdpadmin" id="mdpadmin" value="<?php echo $mdpadmin ?>" /> <br/>         
-	<br/>
+	    <legend>admin</legend>
+        <label for="loginadmin">login:</label>
+        <input type="text" name="loginadmin" id="loginadmin" value="<?php echo $loginadmin ?>" /> <br/>
+        <label for="mdpadmin">mot de passe:</label>
+        <input type="password" name="mdpadmin" id="mdpadmin" value="<?php echo $mdpadmin ?>" /> <br/>         
+	    <br/>
 
 	<script type="text/javascript" language="javascript">
 function Confirmation()

@@ -245,6 +245,10 @@ input[type=submit] {
   padding: 10px;
 }
 
+input[type=radio] {
+  width: 50px;
+  padding: 10px;
+}
 
 #lon, #lat {	
   width: 150px;
