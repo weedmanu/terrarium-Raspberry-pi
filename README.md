@@ -1,6 +1,6 @@
 # terraspiV2
 
-![schéma](../terraspiV2-install/schema.png "schéma")
+![schéma](schema.png "schéma")
 
 Le potentiomètre en **5v** et **GND** et **la pin du milieu** sur **la pin 3 de l'écran LCD**. (sert a régler la luminosité de l' écran)
 
