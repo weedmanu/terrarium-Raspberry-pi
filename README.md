@@ -1,5 +1,7 @@
 # terraspiV2
 
+Gestion d'un terrarium par un Raspberry pi , avec affichage LCD (optionnel) et interface web pour l'historique et la gestion du terrarium.
+
 Consulter le [tutoriel](http://tutoriel.chickenkiller.com/TutoTerraspiV2)
 
 ![schéma](schema.png "schéma")
