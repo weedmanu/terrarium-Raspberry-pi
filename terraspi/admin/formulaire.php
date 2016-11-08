@@ -47,10 +47,7 @@ mysql_close($link);
 
 
 <form method="post" action="traitement.php" id="form" >
-	<fieldset>
-	<legend>réglage</legend>
-
-	
+		
 	   <legend>Heure été / hiver</legend>	   
 	   <input type="radio" name="HeureEteHiver"  id="HeureEte" value="200" /> <label for="HeureEte">été</label>	  
 	   <input type="radio" name="HeureEteHiver" id="HeureHiver" value="100" checked/> <label for="HeureHiver">hiver</label>	   
@@ -65,7 +62,7 @@ mysql_close($link);
 
 	   <legend>consigne</legend>
        <label for="jour">jour:</label>
-       <input type="number" name="jour" id="jour" value="<?php echo $jour ?>" /> 
+       <input type="number" name="jour" id="jour" value="<?php echo $jour ?>" /> <br/>
        <label for="nuit">nuit:</label>
        <input type="number" name="nuit" id="nuit" value="<?php echo $nuit ?>" /> 
 
@@ -109,7 +106,4 @@ this.form.submit();
 
 </script>
 	<input type="submit" name="valider" value="valider" class="bouton" OnClick="return confirm('Etes-vous sûr de vouloir valider?')" />
-	
-</fieldset>
 </form>
-

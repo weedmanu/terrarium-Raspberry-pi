@@ -1,87 +1,95 @@
-	/* un peu de déco */
-	#content > * {		
-		padding: 1em;
-		margin: 0.2em;
-		border-radius: 1em;
-		background-color: #fae89f ;
-	}
-	
-	header {		
-		padding: 1em;
-		margin: 0.2em;
-		border-radius: 1em;
-		background-color: #BCF5A9;
-	}
-	
-	footer {		
-		padding: 1em;
-		margin: 0.2em;
-		border-radius: 1em;
-		background-color:  #fab69f ;
-	}
+/* Layout */
 
-	/*Ca nous intéresse à partir de là*/
-	header, #content, footer {
-		display: -webkit-box;
-		display: -moz-box;         
-		display: -ms-flexbox;
-		display: -webkit-flex;
-		display: flex;             /* déclaration flexbox suivant les navigateurs*/
-	}
-
-	/* On adapte les boites */
-	main {
-		flex: 1; /* Force l'étirement */
-		overflow: none; /* scrolling de la div auto */
-		order: 2 ;/* position */
-		
-		
-	}
-	
-	nav {
-		order: 1; /* position */
-		
-	}
-	
-	aside {
-		order: 3; /* position */
-		
-	}
-
-	/* On force la taille de la page... et on modèle de boite global */
-	body, html {
-		display: flex;
-		flex-direction: column;  /* disposition */
-		height: 100%
-	}
-
-	/* et on s'arrange pour que le contenu (ligne 2) prenne toute la place */
-	#content {
-		height: 100%
-	}
-	
+* {
+  box-sizing: border-box; /* pour maîtriser width et flex-basis */
+}
 
 html {
-	background-color:#7F7F7F;
-	}
-	
-h2 {
-	text-align: center;
-	font-style: italic;
-	
-}		
-	
+  display: flex; flex-direction: column; /* correction bug IE de min-height non appliqué à body */
+  background: #999;
+}
+
+body {
+  display: flex; /* crée un contexte flex pour ses enfants */
+  flex-direction: column; /* affichage vertical */
+  min-height: 100vh; /* toute la hauteur du viewport */
+  padding: 1em;
+}
+
+.wrapper {
+  flex: 1 1 auto; /* occupe la hauteur restante */
+  display: flex; /* crée un contexte flex pour ses enfants */
+}
+
+nav,
+aside {
+  width: 15%;
+}
+
+article {
+  flex: 1; /* occupe la largeur restante */
+  order: 2;
+}
+
+nav {
+  order: 1; /* nav s'affiche en premier */
+}
+
+aside {
+   order: 3;
+}
+
+
+/* Decoration */
+
+body {
+  margin: 0;
+  background: #999;
+  font-family: arial, sans-serif;
+}
+header,
+nav,
+aside,
+article,
+footer {
+  margin: .4em;
+  padding: 1em;
+  border-radius: 12px;
+  border: 1px solid black;
+  
+}
+
+header {
+  background: #BCF5A9;  
+}
+
+nav {
+  background: #fae89f;
+}
+
+aside {
+  background: #fae89f;
+}
+
+article {
+  background: #fae89f;
+}
+
+footer {
+  background: #fab69f;
+}
+
 #shell {
-	width:      80%;
-    height:     80%;
-	margin-left: 10%;
+	width: 90%;
+	height: 70%;
+    margin-left: 5%;
 	border: 1px solid black;
 	border-radius: 7pt;
 	background-color: #BCF5A9;
 }
-	
+
 #model {    
-    padding: 10px 40px; 
+    padding: 10px 20px;
     background: #BCF5A9;
     color: black;
     font-size: 15px;
@@ -93,7 +101,7 @@ h2 {
 
 #cpu {
     border: 1px solid black;
-    padding: 10px 40px; 
+    padding: 10px 20px; 
     background: #BCF5A9;
     color: black;
     font-size: 15px;
@@ -103,7 +111,7 @@ h2 {
 }
 
 #loadavg {    
-    padding: 10px 40px; 
+    padding: 10px 20px;
     background: #BCF5A9;
     color: black;
     font-size: 15px;
@@ -114,7 +122,7 @@ h2 {
 }
 
 #mem {    
-    padding: 10px 40px; 
+    padding: 10px 20px;
     background: #BCF5A9;
     color: black;
     font-size: 15px;
@@ -124,8 +132,8 @@ h2 {
     border: 1px solid black;
 }
 
-#bdd {    
-    width: 300px;
+#bdd  {    
+    padding: 10px 20px;
     background: #BCF5A9;
     color: black;
     font-size: 15px;
@@ -133,35 +141,33 @@ h2 {
     border-radius: 25pt;
     text-align: center;
     border: 1px solid black;
-    border-radius: 7pt;
-    margin-top: 8px;
 }
 
 #date {
     margin:  auto;
     text-align: center;
     font-style: italic;
-    font-size     : 1.5em;
+    font-size :1.5em;
     font-weight: bold; 
 }
 
 #heure {
     margin:  auto;
     text-align: center;
-    font-size     : 2em;  
+    font-size : 2em;
     font-weight: bold;   
 }
 
 #ephem {
 	margin:  auto;
     text-align: center;
-    font-size     : 1.2em; 
+    font-size     : 1.2em;
     font-style: italic;      
 }
 
 
 #nas {    
-    padding: 10px 40px; 
+    padding: 10px 20px;
     background: #81DAF5;
     color: black;   
     font-size: 18px;
@@ -171,7 +177,7 @@ h2 {
 }
 
 #phpmyadmin {    
-    padding: 10px 40px; 
+    padding: 10px 20px;
     background: #F7BE81;
     color: black;   
     font-size: 18px;
@@ -181,7 +187,7 @@ h2 {
 }
 
 #logout {    
-    padding: 10px 40px; 
+    padding: 10px 20px;
     background: #FA5858;
     color: black;   
     font-size: 18px;
@@ -191,7 +197,7 @@ h2 {
 }
 
 #accueil {    
-    padding: 10px 40px; 
+    padding: 10px 20px;
     background: #B4CFED;
     color: black;   
     font-size: 18px;
@@ -200,31 +206,36 @@ h2 {
     border: 1px solid black;
 }
 
-#terrarium {    
-    padding: 10px 40px; 
-    background: #58FA82;
-    color: black;   
-    font-size: 18px;
-    font-style: italic;    
-    border-radius: 25pt;
-   
-}	
 
-.element {    
-    margin: 8%;
-    text-align: center; 
-    
+h2 {
+	text-align: center;
+	font-style: italic;
+	
 }
+
+	header, footer {
+		display: -webkit-box;
+		display: -moz-box;         
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;             /* déclaration flexbox suivant les navigateurs*/
+		
+	}
 
 .element2 {    
     margin: auto;
+    text-align: center;     
+}
+
+.element {    
+    margin-top: 5%;
     text-align: center; 
     
 }
 
 label {
   width: 10%; 
-  font-size: 18px;
+  font-size: 1em;
   margin-top: 1%;  
 }
 
@@ -234,71 +245,85 @@ input {
   border-radius: 7pt;
   border: 1px solid black;
   text-align: center;
-  font-size: 18px;
+  font-size: 1em;
   margin-top: 2%;
    
 }
 
 input[type=submit] {
-  width: 300px;
-  padding: 10px;
+  width: 100%;
+  padding: 3%;
 }
 
 input[type=radio] {
-  width: 50px;
-  padding: 10px;
+  width: 10%;
+  padding: 1%;
 }
 
 
-#lon, #lat {	
-  width: 150px;
+#lon, #lat {
+  width: 50%;
 }
 
 #envoyeur, #receveur {
-   width: 300px; 
+   width: 100%; 
 }
 
 #mdpenvoyeur {
-   width: 150px;
+   width: 50%;
 }
 
 #ipdupi {
-	width: 150px;
+	width: 50%;
 }
 
 #loginadmin, #mdpadmin {
-	width:150px;
+	width:50%;
 }
 
 legend {
 	font-size: 1.2em;
-	margin-left: 40px;
+	margin-left: 1%;
 	font-weight: bold;
 	font-style: italic;
-	margin-bottom: 5px;
-	margin-top: 5px;
+	margin-bottom: 1%;
+	margin-top: 1%;
 }
 
-fieldset {
-	border-color: black;
-	font-size: 1em;
-}
+/* Responsive (fenêtres de moins de 640px) */
 
-
-
-	/*************************************************************/
-
-
-
-	@media all and (max-width: 600px) {
-		#content {
-			flex-flow: column  /* disposition */
-		}
-		nav, aside {
-			order: 2  /* position */
-		}
-		main {
-			order: 1  /* position */
-		}
+@media (max-width: 640px) {
+  .wrapper {
+    flex-direction: column; /* affichage vertical */
+  }
+  nav,
+  aside {
+    width: auto; /* pour écraser la valeur 10em */
+  }
+  nav,
+  aside,
+  article {
+    flex-basis: auto; /* pour écraser la valeur 0, due au flex: 1 */
+  }
+  
+  aside {
+    order: 1; /* nav reprend sa place */
+  }
+  article {
+    order: 2; /* nav reprend sa place */
+  }
+  nav {
+    order: 3; /* nav reprend sa place */
+  }
+  
+  header, footer {
+		display: -webkit-box;
+		display: -moz-box;         
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;             /* déclaration flexbox suivant les navigateurs*/
+		flex-direction: column;
 	}
+}
+
 

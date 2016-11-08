@@ -45,13 +45,12 @@ mysql_close($link);
 
 
 ?>
-
 <!doctype html>
 <html lang="fr">
 <head>
 	<meta charset="utf-8">
-	<title>DIY Terrarium connecté Raspberry pi</title>
-	<link rel="stylesheet" href="indexadmin.css">
+	<title>Test</title>	
+	<link rel="stylesheet" href="test.css">
 	<script type="text/javascript" src="../lib/dateheure.js"></script>
 	<script type="text/javascript" src="../lib/jquery.js"></script>
 	
@@ -75,9 +74,9 @@ mysql_close($link);
 </head>
 <body>
 
-<header>
-	
-	<div class="element" class="d">
+  <header>
+  
+  	<div class="element" class="d">
 		<span id="date"></span>
 		<script type="text/javascript">window.onload = date('date');</script>
 	</div>   
@@ -88,32 +87,22 @@ mysql_close($link);
 		<span id="heure"></span>
 		<script type="text/javascript">window.onload = heure('heure');</script>
 	</div>
+  
+  </header>
 
-</header>
- 
- 
-<div id="content">
-	
-    <main>
-		
-		<h2>Terminal</h2>		
-		<iframe id="shell" src="<?php echo 'http://' .$ipdupi.':4200';?>" ></iframe>
-    
-    </main>
-    
-    
-    <nav>
-		
-				
-		<?php require'formulaire.php';?>
-        
-    
-    </nav>
-    
+  <div class="wrapper">
+   <article>
+   
+   <h2>Terminal</h2>		
+	<iframe id="shell" src="<?php echo 'http://'.$ipdupi.':4200' ;?>" ></iframe>
+   
+   </article>
+   
+    <nav><?php require'formulaire.php';?></nav>
     
     <aside>
-		
-		<h2>PI monitor</h2>
+    
+    <h2>PI monitor</h2>
     
 		<div class="element" id="model"><?php require'model.php';?></div>
 			
@@ -126,15 +115,12 @@ mysql_close($link);
 		<div class="element" ><div id="bdd"><?php require'bdd.php';?></div></div>
     
     </aside>
-    
-    
-</div>
+  </div> <!-- /wrapper -->
 
-<footer> 
-
-			
-				
-	<div class="element2">				
+  <footer>
+  
+  
+  	<div class="element2">				
 	<a href="../accueil/index.php" title="Accueil" style="text-decoration:none"><div id="accueil">Accueil</div></a>	
 	</div>
 	
@@ -144,12 +130,8 @@ mysql_close($link);
 	<a href="logout.php" title="logout" style="text-decoration:none"><div id="logout">déconnexion</div></a>	
 	</div>
 	</div>
-			
+  
+  </footer>
+</body>
 
-</footer>  
- 
- </body>
- </html>
-
-
-
+</html>
