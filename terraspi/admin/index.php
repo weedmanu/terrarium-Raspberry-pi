@@ -49,7 +49,7 @@ mysql_close($link);
 <html lang="fr">
 <head>
 	<meta charset="utf-8">
-	<title>Test</title>	
+	<title>Admin</title>	
 	<link rel="stylesheet" href="test.css">
 	<script type="text/javascript" src="../lib/dateheure.js"></script>
 	<script type="text/javascript" src="../lib/jquery.js"></script>
