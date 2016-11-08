@@ -1,7 +1,0 @@
-{ 	
-	"mysql": 
-	{
-		"loginmysql": "loginbdd",
-		"mdpmysql": "mdpbdd" 
-	}
- }
