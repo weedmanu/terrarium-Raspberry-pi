@@ -43,34 +43,30 @@ $sql = "SELECT * FROM config";
 // Fermer la connexion à MySQL
 mysql_close($link);
 
-
 ?>
+
 <!doctype html>
 <html lang="fr">
 <head>
 	<meta charset="utf-8">
 	<title>Admin</title>	
-	<link rel="stylesheet" href="test.css">
+	<link href="indexadminOK.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="../lib/dateheure.js"></script>
 	<script type="text/javascript" src="../lib/jquery.js"></script>
 	
-	<script type="text/javascript">
-	var auto_refresh = setInterval(
-	function ()
-	{
-		$('#loadavg').load('loadavg.php').fadeIn("fast");
-		$('#cpu').load('tempcpu.php').fadeIn("fast");
-		$('#mem').load('mem.php').fadeIn("fast");    
-	}, 1000); // rafraichis toutes les 10000 millisecondes
- 
-	var auto_refresh = setInterval(
-	function ()
-	{
-		$('#bdd').load('bdd.php').fadeIn("fast");    
-	}, 15000); // rafraichis toutes les 15000 millisecondes
-
+	<script>
+    $(document).ready(
+            function() {
+                setInterval(function() {
+					$('#loadavg').load('loadavg.php').fadeIn("fast");
+					$('#mem').load('mem.php').fadeIn("fast");	
+					$('#bdd').load('bdd.php').fadeIn("fast"); 
+					$('#cpu').load('tempcpu.php').fadeIn("fast");									                     
+                }, 1500);
+            });
 	</script>
-  
+		
+					
 </head>
 <body>
 

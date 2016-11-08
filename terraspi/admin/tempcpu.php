@@ -36,15 +36,16 @@ mysql_close($link);
  $tempconv  =  $temp / 1000;
  //Un chiffre après la virgule ça suffit
  $temppi = round($tempconv,1);
- //On définit les variables d'affichage dans la condition suivante en y affichant la température
- $ok = '<link href="indexadminOK.css" media="all" rel="stylesheet" type="text/css" />'. $temppi .'°C ';
- $wrong = '<link href="indexadminKO.css" media="all" rel="stylesheet" type="text/css" />'. $temppi .'°C ';
  //Si la température < 65°C alors on affiche en vert, sinon en rouge
  echo 'Temp CPU</br>';
- if ($temppi < $warmpi)
-  echo $ok ;
- else
-  echo $wrong ;
-
+ if ($temppi < $warmpi) {
+  echo $temppi;
+  echo ' °C';  
+ } 
+ if ($temppi > $warmpi) {
+  echo $temppi ;
+  echo ' °C';
+  echo '<link href="indexadminKO.css" rel="stylesheet" type="text/css" />';
+}
 
 ?>
