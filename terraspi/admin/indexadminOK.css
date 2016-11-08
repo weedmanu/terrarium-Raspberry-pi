@@ -292,7 +292,7 @@ legend {
 
 /* Responsive (fenêtres de moins de 640px) */
 
-@media (max-width: 640px) {
+@media (max-width: 800px) {
   .wrapper {
     flex-direction: column; /* affichage vertical */
   }

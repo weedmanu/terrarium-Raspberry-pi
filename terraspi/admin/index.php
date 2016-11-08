@@ -72,17 +72,11 @@ mysql_close($link);
 
   <header>
   
-  	<div class="element" class="d">
-		<span id="date"></span>
-		<script type="text/javascript">window.onload = date('date');</script>
-	</div>   
+  	<div class="element" class="d" id="date"><script type="text/javascript">window.onload = date('date');</script></div>   
 
-	<div class="element" id="ephem"><?php require'../accueil/ephem.php';?></div>  
+	<div class="element" id="ephem"><?php require'../accueil/ephem.php';?></div>
 
-	<div class="element" class="h">
-		<span id="heure"></span>
-		<script type="text/javascript">window.onload = heure('heure');</script>
-	</div>
+	<div class="element" class="h" id="heure"><script type="text/javascript">window.onload = heure('heure');</script></div>
   
   </header>
 
