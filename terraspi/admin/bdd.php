@@ -25,11 +25,11 @@ $rqut_nb ="SELECT COUNT( dateandtime ) as recuperation FROM capteurdata ;";
 $rslt_nb = mysql_query( $rqut_nb) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
 $data_nb = mysql_fetch_array($rslt_nb);
 $nb = ''.$data_nb['recuperation'].'';
-$ef = $nb - 100;              // ne garde que 100 entrées si on purge , a modifier selon vos besoin
+$ef = $nb - 1008;              // ne garde que 1008 entrées si on purge, soit une semaine, a modifier selon vos besoins
 
 echo "il y a $nb entrées dans la base de donnée";
 
-if($nb > 1000) //Si le nombre d'entrée est > a 1000
+if($nb > 2016) //Si le nombre d'entrée est > a 2 semaines
      {
           echo '<br>';
           echo 'Veux tu purger la base de donnée ? ';
