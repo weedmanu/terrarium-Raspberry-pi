@@ -1,8 +1,8 @@
-# terraspiV2
+# terrarium-Raspberry-pi
 
 Gestion d'un terrarium par un Raspberry pi , avec affichage LCD (optionnel) et interface web pour l'historique et la gestion du terrarium.
 
-Consultez le [tutoriel](http://nasfamilyone.synology.me/TutoTerraspiV2)
+Consultez le [tutoriel](http://nasfamilyone.synology.me/TutoTerraspiV2) .
 
 ![schéma](schema.png "schéma")
 
@@ -37,3 +37,6 @@ Et l'écran LCD:
  * **pin 14 : au GPIO 18 du Raspberry pi**
  * **pin 15 : au 5v**
  * **pin 16 : au GPIO 13 du Raspberry pi**
+
+
+un script d'installation est également dismonible [ici](https://github.com/weedmanu/terrarium-Raspberry-pi-install).
