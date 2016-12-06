@@ -1,12 +1,20 @@
 <?php
 
-//  Connexion à MySQL.
-$link = mysql_connect( 'localhost', manu, terra );  
+    // on récupère les infos dans config.json
+$json = file_get_contents("/var/www/html/terraspi/csv/bdd.json");
+$config = json_decode($json);
+
+// on passe en variable php les champs qui nous intéressent
+$login = $config->{'mysql'}->{'loginmysql'};
+$mdp = $config->{'mysql'}->{'mdpmysql'};
+
+//  Connexion à MySQL
+$link = mysql_connect( 'localhost', $login, $mdp ); // changer par votre password 
 if ( !$link ) {
   die( 'Could not connect: ' . mysql_error() );
 }
 
-// Sélection de la base de données.
+// Sélection de la base de données
 $db = mysql_select_db( 'Terrarium', $link );
 if ( !$db ) {
   die ( 'Error selecting database Terrarium : ' . mysql_error() );
@@ -14,42 +22,30 @@ if ( !$db ) {
 
 
 // Récupération des lignes.
-$sth = mysql_query("SELECT dateandtime FROM capteurdata "); 
+$sth = mysql_query("SELECT * FROM capteurdata "); 
+
 $rows = array();
+$rows1 = array();
+$rows2 = array();
+$rows3 = array();
+$rows4 = array();
+
 $rows['name'] = 'dateandtime';
+$rows1['name'] = 'tempC';
+$rows2['name'] = 'humC';
+$rows3['name'] = 'tempF';
+$rows4['name'] = 'humF';
+
 while($r = mysql_fetch_array($sth)) {
     $rows['data'][] = $r['dateandtime'];
-}
-
-$sth = mysql_query("SELECT tempC FROM capteurdata ");
-$rows1 = array();
-$rows1['name'] = 'tempC';
-while($rr = mysql_fetch_array($sth)) {
-    $rows1['data'][] = $rr['tempC'];
-}
-
-$sth = mysql_query("SELECT humC FROM capteurdata ");
-$rows2 = array();
-$rows2['name'] = 'humC';
-while($rrr = mysql_fetch_assoc($sth)) {
-    $rows2['data'][] = $rrr['humC'];
-}
-
-$sth = mysql_query("SELECT tempF FROM capteurdata ");
-$rows3 = array();
-$rows3['name'] = 'tempF';
-while($rrrr = mysql_fetch_array($sth)) {
-    $rows3['data'][] = $rrrr['tempF'];
-}
-
-$sth = mysql_query("SELECT humF FROM capteurdata ");
-$rows4 = array();
-$rows4['name'] = 'humF';
-while($rrrrr = mysql_fetch_assoc($sth)) {
-    $rows4['data'][] = $rrrrr['humF'];
+    $rows1['data'][] = $r['tempC'];
+    $rows2['data'][] = $r['humC'];
+    $rows3['data'][] = $r['tempF'];
+    $rows4['data'][] = $r['humF'];    
 }
 
 $result = array();
+
 array_push($result,$rows);
 array_push($result,$rows1);
 array_push($result,$rows2);
@@ -62,5 +58,3 @@ print json_encode($result, JSON_NUMERIC_CHECK);
 // Fermer la connexion à MySQL
 mysql_close($link);
 ?>
-
-
