@@ -35,7 +35,7 @@ if($nb > 2016) //Si le nombre d'entrée est > a 2 semaines
           echo 'Veux tu purger la base de donnée ? ';
           echo '<br>';
           echo '
-<form method="post" action="raspi.php">
+<form method="post" action="index.php">
 <input type="radio" name="reponse" value="oui">
 Oui
 <input type="radio" name="reponse" value="non">
