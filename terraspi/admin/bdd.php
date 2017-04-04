@@ -25,47 +25,16 @@ $rqut_nb ="SELECT COUNT( dateandtime ) as recuperation FROM capteurdata ;";
 $rslt_nb = mysql_query( $rqut_nb) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
 $data_nb = mysql_fetch_array($rslt_nb);
 $nb = ''.$data_nb['recuperation'].'';
-$ef = $nb - 1008;              // ne garde que 1008 entrées si on purge, soit une semaine, a modifier selon vos besoins
 
 echo "il y a $nb entrées dans la base de donnée";
 
-if($nb > 2016) //Si le nombre d'entrée est > a 2 semaines
-     {
-          echo '<br>';
-          echo 'Veux tu purger la base de donnée ? ';
-          echo '<br>';
-          echo '
-<form method="post" action="index.php">
-<input type="radio" name="reponse" value="oui">
-Oui
-<input type="radio" name="reponse" value="non">
-Non
-<input type="submit" value="Valider">
-</form> </br>';
-
-     }
-
-    $reponse=$_POST['reponse'];
-
-if($reponse=="oui") {
-    // lancement de la requête pour effacer 
-$sql ="DELETE from temperaturedata ORDER BY dateandtime ASC LIMIT $ef";
-
-// on exécute la requête (mysql_query) et on affiche un message au cas où la requête ne se passait pas bien (or die)
-mysql_query($sql) or die('Erreur SQL !'.$sql.'<br />'.mysql_error());
-echo "ok effacé ";
-
-
-}
-elseif($reponse=="non") {
-echo "OK , on efface rien ";
-echo '</br>';
-echo '</br>';
-} 
-else {
-    echo"";
-}
-
+if($nb < 1440) //Si le nombre d'entrée est >24h
+	{
+		$histo = "../histo/histo.php";
+	}	else {
+			$histo = "../histoselect/histo.php";
+			}
+    
 // Fermer la connexion à MySQL
 mysql_close($link);
 ?>

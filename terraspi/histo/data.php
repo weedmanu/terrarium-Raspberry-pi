@@ -31,17 +31,17 @@ $rows3 = array();
 $rows4 = array();
 
 $rows['name'] = 'dateandtime';
-$rows1['name'] = 'tempC';
-$rows2['name'] = 'humC';
-$rows3['name'] = 'tempF';
-$rows4['name'] = 'humF';
+$rows1['name'] = 'tempF';
+$rows2['name'] = 'humF';
+$rows3['name'] = 'tempC';
+$rows4['name'] = 'humC';
 
 while($r = mysql_fetch_array($sth)) {
     $rows['data'][] = $r['dateandtime'];
-    $rows1['data'][] = $r['tempC'];
-    $rows2['data'][] = $r['humC'];
-    $rows3['data'][] = $r['tempF'];
-    $rows4['data'][] = $r['humF'];    
+    $rows1['data'][] = $r['tempF'];
+    $rows2['data'][] = $r['humF'];
+    $rows3['data'][] = $r['tempC'];
+    $rows4['data'][] = $r['humC'];    
 }
 
 $result = array();

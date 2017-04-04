@@ -37,6 +37,8 @@ var auto_refresh = setInterval(
                 <span id="date"></span>
                 <script type="text/javascript">window.onload = date('date');</script>
             </div>     
+
+			<div class="element" id="cf"></div>
             
             <div class="element" id="heure">
                 <span id="heure"></span>
@@ -57,23 +59,25 @@ var auto_refresh = setInterval(
         
         <div id="ephem">
             <?php require'ephem.php';?>
-        </div>
-            
+        </div>       
+                    
     </section>
         
         
     <!-- pied de page -->    
     <footer>
         
-        <div id="conteneur2">
-            
-            <div class="element" id="pc">
+        <div id="conteneur2">			
+
+			<div class="element" id="pc">
                 <a href="../admin/index.php" style="text-decoration:none"><span id="manage">Admin</span></a>
-            </div>
-            
-            <div class="element" id="serpent">
-                <a href="../histo/index.php" style="text-decoration:none"><span id="histo">Historique</span></a>
-            </div>          
+            </div> 
+
+             <div id="bdd" class="element" ><?php require'../admin/bdd.php';?></div>
+
+             <div class="element" id="serpent">
+                <a href="<?php echo "$histo" ;?>" style="text-decoration:none"><span id="histo">Historique</span></a>
+            </div>                          
              
         </div>                                                  
 

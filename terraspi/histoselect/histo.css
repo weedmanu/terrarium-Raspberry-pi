@@ -1,0 +1,211 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 95%;
+    margin: 0;
+    padding: 0;
+    color: #FFFFFF;
+    background-color : black;
+
+}
+
+#date {
+    margin-left:  2%;
+    text-align: center;
+    font-size : 200%;
+    color:#90EE90;
+    }
+
+#heure {
+    margin-right:  2%;
+    text-align: center;
+    font-size     : 400%;   
+    color: #EF9090;
+    }
+    
+.conteneur {    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 3%; 
+    margin-bottom: 2%;   
+}
+
+.element {
+    margin: auto;
+    text-align: center; 
+    
+}
+
+#container {
+     margin-top:3%;
+     margin-bottom: 2%;
+}
+
+#admin {    
+    padding: 2px 10px; 
+    background: #EA3230;
+    color: black;   
+    font-size: 18px;
+    font-style: italic;   
+    border:solid 1px black; 
+    border-radius: 25pt;
+}
+
+#formu {
+	margin-left: 5%;
+}
+
+select#graphe {	
+	background: #90EE90;	
+	padding: 5px 10px; 
+	font-style: italic;
+	font-weight: bold;
+	border:solid 1px black;
+	border-radius: 25pt;
+}
+
+select#limit {	
+	background: #CFCE57;	
+	padding: 5px 10px; 
+	font-style: italic;
+	font-weight: bold;
+	border:solid 1px black;
+	border-radius: 25pt;
+}
+
+input#submit { 
+	background: #EF9090;
+	padding: 5px 10px; 
+	font-style: italic;
+	font-weight: bold;
+	border:solid 1px black;
+	border-radius: 25pt;
+}
+
+
+#accueil {
+    
+    padding: 2px 10px; 
+    background: #54E96B;
+    color: black;   
+    font-size: 18px;
+    font-style: italic;   
+    border:solid 1px black; 
+    border-radius: 25pt;
+}
+
+h1 {
+	text-align: center;
+	color: #CFCE57;
+}
+
+#bdd {
+    
+    padding: 2px 10px; 
+    background: #D9D960;
+    color: black;   
+    font-size: 18px;
+    font-style: italic;  
+    border:solid 1px black;  
+    border-radius: 25pt;
+}
+
+#serpent a {
+color: grey;
+padding: 20px 10px 10px 95px;
+background: rgba(0,0,0,0.5) url(img/serpent.png) no-repeat 5px 10px;
+}
+
+/* première étape */
+#serpent a, #serpent a:hover, #serpent a:focus {
+color: white;
+animation-name: serpent; /* nom de l'animation */
+animation-duration: 4s; /* temps de l'animation (4s) */
+animation-iteration-count: infinite; /* nombre de boucles (infinie) */
+animation-timing-function: linear; /* accelération de l'animation (constant) */
+}
+/* deuxième étape */
+@keyframes serpent {   
+0% {background:rgba(0,0,0,0.4) url(img/serpent.png) no-repeat 5px 10px;}
+50% {background:rgba(0,0,0,1) url(img/serpent.png) no-repeat 40px 10px;}
+100% {background:rgba(0,0,0,0.4) url(img/serpent.png) no-repeat 5px 10px;}
+}
+
+
+#pc {
+    text-align: center;
+    font-size: 18px;
+    font-style: italic;     
+}
+
+#pc a {
+color: grey;
+padding: 15px 10px 10px 95px;
+background: rgba(0,0,0,0.5) url(img/pc.png) no-repeat 5px 10px;
+}
+
+/* première étape */
+#pc a, #pc a:hover, #pc a:focus {
+color: white;
+animation-name: pc; /* nom de l'animation */
+animation-duration: 4s; /* temps de l'animation (4s) */
+animation-iteration-count: infinite; /* nombre de boucles (infinie) */
+animation-timing-function: linear; /* accelération de l'animation (constant) */
+}
+/* deuxième étape */
+@keyframes pc {    
+0% {background:rgba(0,0,0,0.4) url(img/pc.png) no-repeat 5px 10px;}
+50% {background:rgba(0,0,0,1) url(img/pc.png) no-repeat 40px 10px;}
+100% {background:rgba(0,0,0,0.4) url(img/pc.png) no-repeat 5px 10px;}
+}
+
+.loader {
+  color: red;
+  font-size: 20px;
+  margin: 100px auto;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-animation: load4 1.3s infinite linear;
+  animation: load4 1.3s infinite linear;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+@keyframes load4 {
+  0%,
+  100% {
+    box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+  }
+  12.5% {
+    box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+  }
+  25% {
+    box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+  }
+  37.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  50% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  62.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+  }
+  75% {
+    box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+  }
+  87.5% {
+    box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+  }
+}
+
