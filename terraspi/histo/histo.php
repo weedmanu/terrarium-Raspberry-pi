@@ -1,3 +1,5 @@
+<?php require'bdd.php';?>
+
 <!DOCTYPE html> 
 <head> 
 		<meta charset="utf-8" /> 
@@ -57,8 +59,9 @@
 			<a href="../accueil/index.php" style="text-decoration:none"><span id="accueil">Accueil</span></a> <!--lien vers la page d'accueil-->
 		</div> 
 
-
-		<div class="element" id="bdd"><?php require'../admin/bdd.php';?></div> <!-- la bdd -->		
+		<a href="<?php echo $histo;?>" style="text-decoration:none">
+		<div class="element" id="bdd"><?php echo "Il y a $nb entrées dans la base de donnée";?></div> <!-- la bdd -->		
+		</a>
 
 
 		<div class="element" id="pc">
