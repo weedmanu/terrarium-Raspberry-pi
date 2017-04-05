@@ -5,8 +5,8 @@ session_start(); // pour pouvoir utiliser les sessions
   if(empty($_POST))
 		{
 		  $limit = "tout";
-		  $graphe = 'datamoyh.php';
-		  $titre = "<strong>Historique du terrarium des 6 dernières heures </strong><em>(Données lissées, moy / h)</em>";			  
+		  $graphe = 'data.php';
+		  $titre = "<strong>Historique du terrarium des 6 dernières heures </strong><em>(Données brutes)</em>";			  
 		}
 	
   // Si le tableau $_POST existe alors le formulaire a été envoyé
@@ -22,19 +22,19 @@ session_start(); // pour pouvoir utiliser les sessions
 		if ($graphe == 'data.php') {	
 			switch ($limit) {
 				case "tout":
-					$titre = "<strong>Historique du terrarium</strong><em>(Données bruts)</em>";
+					$titre = "<strong>Historique du terrarium</strong><em>(Données brutes)</em>";
 					break;				
 				case "1440":
-					$titre = "<strong>Historique du terrarium des dernières 24 heures </strong><em>(Données bruts)</em>";
+					$titre = "<strong>Historique du terrarium des dernières 24 heures </strong><em>(Données brutes)</em>";
 					break;
 				case "10080":
-					$titre = "<strong>Historique du terrarium des 7 derniers jours </strong><em>(Données bruts)</em>";
+					$titre = "<strong>Historique du terrarium des 7 derniers jours </strong><em>(Données brutes)</em>";
 					break;
 				case "20160":
-					$titre = "<strong>Historique du terrarium des 15 derniers jours </strong><em>(Données bruts)</em>";
+					$titre = "<strong>Historique du terrarium des 15 derniers jours </strong><em>(Données brutes)</em>";
 					break;
 				case "40320":
-					$titre = "<strong>Historique du terrarium des 30 derniers jours </strong><em>(Données bruts)</em>";
+					$titre = "<strong>Historique du terrarium des 30 derniers jours </strong><em>(Données brutes)</em>";
 					break;
 			}		
 			
