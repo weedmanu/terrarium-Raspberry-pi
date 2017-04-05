@@ -9,8 +9,6 @@ if(empty($limit2))
 		  $limit2 = 1440;		    
 		}
 
-$limit = ($limit2 / 60);
-
     // on récupère les infos dans config.json
 $json = file_get_contents("/var/www/html/terraspi/csv/bdd.json");
 $config = json_decode($json);
@@ -26,7 +24,19 @@ define('DB_PASS' , "$mdp"); // votre mdp
     
 try {    
     $PDO = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-    $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); 
+    $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+
+    $sql = 'SELECT COUNT(*) AS nb FROM capteurdata';
+    $result = $PDO->query($sql);
+    $columns = $result->fetch();
+    $nb = $columns['nb'];
+
+	if($nb < $limit2)
+	{
+		$limit2 = $nb;
+	}
+
+	$limit = ($limit2 / 60);
 	
 	$reponse = $PDO->query("SELECT DATE_FORMAT(dateandtime,'%d-%m-%Y %H') as moyheure FROM capteurdata WHERE dateandtime < NOW() AND dateandtime > DATE_SUB(NOW(), INTERVAL $limit HOUR) GROUP BY MONTH(dateandtime), DAY(dateandtime), HOUR(dateandtime)");	
 	$rows = array();

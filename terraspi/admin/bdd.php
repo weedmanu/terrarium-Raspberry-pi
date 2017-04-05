@@ -27,13 +27,6 @@ $data_nb = mysql_fetch_array($rslt_nb);
 $nb = ''.$data_nb['recuperation'].'';
 
 echo "il y a $nb entrées dans la base de donnée";
-
-if($nb < 1440) //Si le nombre d'entrée est >24h
-	{
-		$histo = "../histo/histo.php";
-	}	else {
-			$histo = "../histoselect/histo.php";
-			}
     
 // Fermer la connexion à MySQL
 mysql_close($link);

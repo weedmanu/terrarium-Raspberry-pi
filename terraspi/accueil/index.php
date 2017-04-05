@@ -72,11 +72,11 @@ var auto_refresh = setInterval(
 			<div class="element" id="pc">
                 <a href="../admin/index.php" style="text-decoration:none"><span id="manage">Admin</span></a>
             </div> 
-
+			
              <div id="bdd" class="element" ><?php require'../admin/bdd.php';?></div>
 
-             <div class="element" id="serpent">
-                <a href="<?php echo "$histo" ;?>" style="text-decoration:none"><span id="histo">Historique</span></a>
+             <div class="element" id="courbes">
+                <a href="../histo/histo.php" style="text-decoration:none"><span id="histo">Historique</span></a>
             </div>                          
              
         </div>                                                  

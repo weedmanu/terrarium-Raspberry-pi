@@ -1,5 +1,14 @@
 <?php
 
+session_start();
+
+$limit = $_SESSION['form']['limit']; 
+
+if(empty($_SESSION['form']['limit']))
+	{
+	  $limit = 1440;	//(60min * 24 hr)
+	}
+
     // on récupère les infos dans config.json
 $json = file_get_contents("/var/www/html/terraspi/csv/bdd.json");
 $config = json_decode($json);
@@ -8,53 +17,69 @@ $config = json_decode($json);
 $login = $config->{'mysql'}->{'loginmysql'};
 $mdp = $config->{'mysql'}->{'mdpmysql'};
 
-//  Connexion à MySQL
-$link = mysql_connect( 'localhost', $login, $mdp ); // changer par votre password 
-if ( !$link ) {
-  die( 'Could not connect: ' . mysql_error() );
-}
+define('DB_HOST' , 'localhost');
+define('DB_NAME' , 'Terrarium');
+define('DB_USER' , "$login"); // votre login de la base de donnée
+define('DB_PASS' , "$mdp"); // votre mdp
+    
+try {    
+    $PDO = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+    $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);  
+    
+    $sql = 'SELECT COUNT(*) AS nb FROM capteurdata';
+    $result = $PDO->query($sql);
+    $columns = $result->fetch();
+    $nb = $columns['nb'];    
 
-// Sélection de la base de données
-$db = mysql_select_db( 'Terrarium', $link );
-if ( !$db ) {
-  die ( 'Error selecting database Terrarium : ' . mysql_error() );
-}
+    if($nb < $limit)
+		{
+			$limit = $nb;
+		}
+		
+	$ligne = $nb - $limit;
 
-
-// Récupération des lignes.
-$sth = mysql_query("SELECT * FROM capteurdata "); 
-
-$rows = array();
-$rows1 = array();
-$rows2 = array();
-$rows3 = array();
-$rows4 = array();
-
-$rows['name'] = 'dateandtime';
-$rows1['name'] = 'tempF';
-$rows2['name'] = 'humF';
-$rows3['name'] = 'tempC';
-$rows4['name'] = 'humC';
-
-while($r = mysql_fetch_array($sth)) {
-    $rows['data'][] = $r['dateandtime'];
-    $rows1['data'][] = $r['tempF'];
-    $rows2['data'][] = $r['humF'];
-    $rows3['data'][] = $r['tempC'];
-    $rows4['data'][] = $r['humC'];    
+	$ligne =(int)$ligne;
+    $nb =(int)$nb;
+    
+	$reponse = $PDO->prepare('SELECT * FROM capteurdata LIMIT :ligne, :nb');
+	$reponse->bindValue('ligne', $ligne, PDO::PARAM_INT);
+	$reponse->bindValue('nb', $nb, PDO::PARAM_INT);
+	$reponse->execute();
+	
+	$rows = array();
+	$rows['name'] = 'dateandtime';
+	$rows1 = array();
+	$rows1['name'] = 'tempF';
+	$rows2 = array();
+	$rows2['name'] = 'humF';
+	$rows3 = array();
+	$rows3['name'] = 'tempC';
+	$rows4 = array();
+	$rows4['name'] = 'humC';
+	
+	while ($valeur = $reponse->fetch())
+	{	
+		$rows['data'][] = $valeur['dateandtime'];	
+		$rows1['data'][] = $valeur['tempF'];
+		$rows2['data'][] = $valeur['humF'];	
+		$rows3['data'][] = $valeur['tempC'];		
+		$rows4['data'][] = $valeur['humC'];					
+	}
+ 
+} catch(Exception $e) {
+    echo "Impossible de se connecter à la base de données '".DB_NAME."' sur ".DB_HOST." avec le compte utilisateur '".DB_USER."'";
+    echo "<br/>Erreur PDO : <i>".$e->getMessage()."</i>";
+    die();
 }
 
 $result = array();
-
 array_push($result,$rows);
 array_push($result,$rows1);
 array_push($result,$rows2);
 array_push($result,$rows3);
 array_push($result,$rows4);
 
-//  Afficher les résultats
+// 6 - Afficher les résultats
 print json_encode($result, JSON_NUMERIC_CHECK);
 
-// Fermer la connexion à MySQL
-mysql_close($link);
-?>
+$reponse->closeCursor();
