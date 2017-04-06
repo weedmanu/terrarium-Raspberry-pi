@@ -25,6 +25,13 @@ $rqut_nb ="SELECT COUNT( dateandtime ) as recuperation FROM capteurdata ;";
 $rslt_nb = mysql_query( $rqut_nb) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());  
 $data_nb = mysql_fetch_array($rslt_nb);
 $nb = ''.$data_nb['recuperation'].'';
+$ef = $nb - 120960; // on grade 3 mois de data
+if($nb > 125000) //Si le nombre d'entrée est > a 3 mois et plus
+	{
+		$sql ="DELETE from temperaturedata ORDER BY dateandtime ASC LIMIT $ef";
+		$sql = mysql_query($sql) or die('Erreur SQL !'.$sql.'<br />'.mysql_error());
+	}
+
 
 echo "il y a $nb entrées dans la base de donnée";
     
