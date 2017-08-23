@@ -39,4 +39,4 @@ Et l'écran LCD:
  * **pin 16 : au GPIO 13 du Raspberry pi**
 
 
-un script d'installation est également dismonible [ici](https://github.com/weedmanu/terrarium-Raspberry-pi-install).
+Un script d'installation est également dismonible [ici](https://github.com/weedmanu/terrarium-Raspberry-pi-install).
