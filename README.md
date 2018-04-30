@@ -2,7 +2,7 @@
 
 Gestion d'un terrarium par un Raspberry pi , avec affichage LCD (optionnel) et interface web pour l'historique et la gestion du terrarium.
 
-Consultez le [tutoriel](https://nasfamilyone.synology.me/tuto&co/tutoriels/TutoTerraspiV2/) .
+Consultez le [tutoriel](https://nasfamilyone.synology.me/tuto&co/tutoriels/TutoTerraspiV2/).
 
 ![schéma](schema.png "schéma")
 
